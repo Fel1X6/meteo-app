@@ -87,3 +87,33 @@
   text-align: center;
   color: #6b7280;
 }
+
+.dayPager {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pagerBtn {
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(17, 24, 39, 0.15);
+  background: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.pagerBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px rgba(17, 24, 39, 0.08);
+}
+
+.pagerBtnActive {
+  color: white;
+  border-color: transparent;
+  background: linear-gradient(135deg, #4f46e5, #6d28d9);
+  box-shadow: 0 10px 22px rgba(79, 70, 229, 0.18);
+}

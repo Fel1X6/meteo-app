@@ -13,11 +13,24 @@ export default function App() {
   const [errorMessage, setErrorMessage] = useState("");
   const [place, setPlace] = useState(null);
   const [forecast, setForecast] = useState(null);
+  const [dayIndex, setDayIndex] = useState(0);
 
-  const rows24h = useMemo(() => {
-    if (!forecast?.rows) return [];
-    return forecast.rows.slice(0, 24);
+  const days = useMemo(() => {
+  const rows = forecast?.rows ?? [];
+  const map = new Map();
+
+  for (const r of rows) {
+    const dateKey = String(r.time).slice(0, 10);
+    if (!map.has(dateKey)) map.set(dateKey, []);
+    map.get(dateKey).push(r);
+  }
+
+  return Array.from(map.entries()).map(([date, rows]) => ({ date, rows }));
   }, [forecast]);
+
+  const activeDay = days[dayIndex] ?? null;
+  const rowsForView = activeDay?.rows ?? [];
+
 
   async function handleSearch() {
     const trimmed = query.trim();
@@ -46,6 +59,7 @@ export default function App() {
       const fc = await getHourlyForecast(geo.latitude, geo.longitude);
       setPlace(geo);
       setForecast(fc);
+      setDayIndex(0);
       setStatus("success");
     } catch (err) {
       let msg = "Failed to load data.";
@@ -114,13 +128,28 @@ export default function App() {
               {forecast?.timezone}
             </div>
 
-            {rows24h.length === 0 ? (
-              <div className="status">No hourly data available.</div>
-            ) : view === "cards" ? (
-              <WeatherCards rows={rows24h} />
-            ) : (
-              <WeatherTable rows={rows24h} />
-            )}
+            {days.length > 0 && (
+            <div className="dayPager">
+              {days.map((d, idx) => (
+                <button
+                  key={d.date}
+                  type="button"
+                  className={`pagerBtn ${idx === dayIndex ? "pagerBtnActive" : ""}`}
+                  onClick={() => setDayIndex(idx)}
+                >
+                  {idx === 0 ? `Day 1 (${d.date})` : `Day ${idx + 1} (${d.date})`}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {rowsForView.length === 0 ? (
+            <div className="status">No hourly data available.</div>
+          ) : view === "cards" ? (
+            <WeatherCards rows={rowsForView} />
+          ) : (
+            <WeatherTable rows={rowsForView} />
+          )}
           </section>
         )}
 
