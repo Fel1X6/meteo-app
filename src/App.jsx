@@ -8,8 +8,8 @@ import "./styles/App.css";
 
 export default function App() {
   const [query, setQuery] = useState("");
-  const [view, setView] = useState("cards"); // cards | table
-  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const [view, setView] = useState("cards");
+  const [status, setStatus] = useState("idle"); 
   const [errorMessage, setErrorMessage] = useState("");
   const [place, setPlace] = useState(null);
   const [forecast, setForecast] = useState(null);
@@ -69,10 +69,10 @@ export default function App() {
     <div className="page">
       <div className="container">
         <header className="header">
-          <h1 className="title">Open-Meteo Weather App</h1>
+          <h1 className="title">Weather App</h1>
           <p className="subtitle">
-            Single-page app: enter a city, fetch data from a public API, and view the
-            results in two formats (Cards and Table).
+            Displays the weather in a selected city using a public API and the ability to
+            switch between card and table views.
           </p>
         </header>
 
@@ -126,7 +126,7 @@ export default function App() {
 
         {status === "idle" && (
           <div className="hint">
-            Type a city (e.g., Riga) and press Search.
+            Type a city (e.g., Daugavpils) and press Search.
           </div>
         )}
       </div>

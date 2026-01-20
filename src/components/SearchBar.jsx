@@ -13,7 +13,7 @@ export default function SearchBar({ value, onChange, onSubmit, disabled }) {
         className="searchInput"
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        placeholder="Enter a city (e.g., Riga)"
+        placeholder="Enter a city (e.g., Daugavpils)"
         disabled={disabled}
       />
       <button className="btn btnPrimary" type="submit" disabled={disabled}>
