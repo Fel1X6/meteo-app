@@ -1,0 +1,38 @@
+.tableWrap {
+  margin-top: 14px;
+  overflow-x: auto;
+  border-radius: 18px;
+  box-shadow: 0 12px 26px rgba(17, 24, 39, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(10px);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 680px;
+}
+
+.table thead th {
+  text-align: left;
+  padding: 12px 12px;
+  font-weight: 800;
+  color: #111827;
+  background: rgba(79, 70, 229, 0.12);
+  border-bottom: 1px solid rgba(17, 24, 39, 0.08);
+}
+
+.table tbody td {
+  padding: 12px 12px;
+  border-bottom: 1px solid rgba(17, 24, 39, 0.06);
+  color: #111827;
+}
+
+.table tbody tr:nth-child(even) td {
+  background: rgba(17, 24, 39, 0.02);
+}
+
+.table tbody tr:hover td {
+  background: rgba(79, 70, 229, 0.08);
+}

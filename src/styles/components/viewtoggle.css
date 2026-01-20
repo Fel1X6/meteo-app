@@ -1,0 +1,22 @@
+.toggle {
+  display: flex;
+  gap: 10px;
+}
+
+.btnGhost {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(17, 24, 39, 0.15);
+  color: #111827;
+}
+
+.btnGhost:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px rgba(17, 24, 39, 0.08);
+}
+
+.btnActive {
+  color: white;
+  border-color: transparent;
+  background: linear-gradient(135deg, #4f46e5, #6d28d9);
+  box-shadow: 0 10px 22px rgba(79, 70, 229, 0.18);
+}
